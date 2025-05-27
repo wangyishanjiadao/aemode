@@ -1,0 +1,311 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  max-width: 12000px;
+  margin: 0 auto;
+}
+
+/* 小白条 */
+.sidebar {
+  width: 120px;
+  padding: 20px;
+  border-right: 1px solid #444444;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #1a1a1a;
+}
+
+/* 首页分类 */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+
+.sidebar-logo {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* 杂鱼图片 */
+.sidebar-zayv {
+  width: 100%;
+  height: auto;
+}
+
+.sidebar h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul ul {
+  padding-left: 15px;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #a8a8a8;
+  display: block;
+  padding: 5px 0;
+}
+
+.sidebar nav a:hover {
+  color: #1a1a1a;
+  background-color: #ebebeb;
+  border: 2px solid #ffffff;
+  padding: 4px 8px;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 主页内容 */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 160px;
+  padding-bottom: 80px; /* 添加底部内边距，确保内容不被固定页脚遮挡 */
+}
+
+/* 主页标题 */
+.main-content header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3f3f3f;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.main-content header input[type="search"] {
+  width: 300px; /* 设置搜索框的宽度 */
+  height: 30px; /* 设置搜索框的高度 */
+  padding: 8px;
+  border: 1px solid #444;
+  background-color: #3d3d3d;
+  color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.main-content header .header-links a:hover {
+  color: #fff;
+}
+
+/* 修改h1标题样式 */
+.main-content article h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.main-content article .image-placeholder {
+  border: 1px dashed #353535;
+  padding: 50px;
+  text-align: center;
+  margin: 20px 0;
+  background-color: #252525;
+}
+
+.right-nav {
+  width: 150px;
+  padding: 20px;
+  border-left: 1px solid #333;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #1a1a1a;
+}
+
+.right-nav h3 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.right-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.right-nav ul a {
+  text-decoration: none;
+  color: #b0b0b0;
+  display: block;
+  padding: 5px 0;
+  font-size: 1em;
+}
+
+.right-nav ul a:hover {
+  color: #fff;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  padding: 18px 0;
+  margin: 0;
+  background: #232323;
+  border-top: 1px solid #333;
+  font-size: 1em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* 搜索导航按钮样式 */
+.search-nav {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  display: flex;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.search-nav button {
+  background: #444;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-nav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.search-nav button:hover:not(:disabled) {
+  background: #666;
+}
+
+/* 搜索结果样式 */
+.search-results {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  background: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.search-results h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+.search-result {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #555;
+}
+
+.search-result:hover {
+  background: #444;
+}
+
+.search-result .category {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 3px;
+}
+
+.search-result .content {
+  font-size: 14px;
+}
+
+/* 高亮匹配项 */
+.highlight {
+  background-color: yellow;
+  color: black;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.footer-links li a {
+  color: #b0b0b0;
+  text-decoration: none;
+  padding: 6px 18px;
+  margin: 0 8px;
+  border-radius: 18px;
+  font-size: 0.9em;
+  transition: all 0.2s;
+}
+
+.footer-links li a:hover {
+  color: #fff;
+  background: #333;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #a8a8a8;
+  display: block;
+  padding: 5px 0;
+  transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+.sidebar nav a:hover {
+  color: #000000; /* 悬停时文字颜色 */
+  background-color: #ffffff; /* 悬停时背景颜色 */
+  border: 2px solid #ffffff; /* 添加边框 */
+  padding: 4px 8px; /* 可选：添加内边距以使方块更明显 */
+  border-radius: 3px; /* 可选：添加圆角 */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* 可选：添加阴影效果 */
+  animation: pulse 1.5s infinite; /* 添加脉动动画 */
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+/* 添加图片悬停效果 */
+.sidebar-main {
+  transition: transform 0.3s ease; /* 平滑过渡效果 */
+  cursor: pointer; /* 鼠标指针显示为手形 */
+  width: auto; /* 图片初始宽度不变 */
+  height: auto; /* 图片初始高度不变 */
+}
+
+.sidebar-main:hover {
+  transform: scale(1.1); /* 鼠标悬停时图片放大10% */
+}

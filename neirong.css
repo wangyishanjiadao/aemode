@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* 黑色背景 */
+    color: #ffffff; /* 白色文字 */
+}
+
+header {
+    background-color: #333333; /* 深灰色头部背景 */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid #444444; /* 添加边框 */
+}
+
+h1 {
+    margin: 0;
+    padding: 0.5rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.disk-group {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 20px; /* 调整两个网盘之间的间距 */
+}
+
+section {
+    background-color: #2a2a2a; /* 深灰色背景 */
+    padding: 20px;
+    border-radius: 5px; /* 添加圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+    flex: 1;
+}
+
+h2 {
+    color: #ffffff; /* 白色标题文字 */
+    border-bottom: 1px solid #444444; /* 添加边框 */
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4a4a4a; /* 按钮背景颜色 */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px; /* 圆角按钮 */
+    border: 1px solid #555555; /* 按钮边框 */
+    transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+.download-btn:hover {
+    background-color: #5a5a5a; /* 悬停时按钮背景颜色 */
+    border-color: #666666; /* 悬停时按钮边框颜色 */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* 添加悬停时的阴影效果 */
+}
