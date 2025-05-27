@@ -298,14 +298,64 @@ body {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
+
+/* B站风格链接样式 */
+.bilibili-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #23ade5; /* B站主题蓝色 */
+  background: linear-gradient(90deg, #23ade5 0%, #fb7299 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bilibili-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(35, 173, 229, 0.1) 0%, rgba(251, 114, 153, 0.1) 100%);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  border-radius: 18px;
+  z-index: -1;
+}
+
+.bilibili-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(35, 173, 229, 0.2);
+}
+
+.bilibili-link:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.bilibili-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(35, 173, 229, 0.2);
+}
+
 /* 添加图片悬停效果 */
 .sidebar-main {
   transition: transform 0.3s ease; /* 平滑过渡效果 */
   cursor: pointer; /* 鼠标指针显示为手形 */
-  width: auto; /* 图片初始宽度不变 */
-  height: auto; /* 图片初始高度不变 */
-}
-
-.sidebar-main:hover {
-  transform: scale(1.1); /* 鼠标悬停时图片放大10% */
+  width: 600px; /* 统一图片宽度 */
+  height: auto; /* 高度自动调整保持比例 */
+  display: block; /* 确保图片占据整行 */
+  margin: 20px 0; /* 添加上下间距 */
+  border-radius: 8px; /* 添加圆角 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
 }
