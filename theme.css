@@ -1,0 +1,92 @@
+/* 亮色主题 */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+  --hover-bg: #f0f0f0;
+  --sidebar-bg: #ffffff;
+  --footer-bg: #f5f5f5;
+  --search-bg: #ffffff;
+  --search-border: #dddddd;
+  --highlight-bg: #e3f2fd;
+}
+
+/* 暗色主题 */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #252525;
+  --text-primary: #ffffff;
+  --text-secondary: #a8a8a8;
+  --border-color: #444444;
+  --hover-bg: #333333;
+  --sidebar-bg: #1a1a1a;
+  --footer-bg: #232323;
+  --search-bg: #3d3d3d;
+  --search-border: #444444;
+  --highlight-bg: #3d3d3d;
+}
+
+/* 应用主题变量 */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  border-right-color: var(--border-color);
+}
+
+.sidebar nav a {
+  color: var(--text-secondary);
+}
+
+.sidebar nav a:hover {
+  color: var(--text-primary);
+  background-color: var(--hover-bg);
+  border-color: var(--border-color);
+}
+
+.main-content header input[type="search"] {
+  background-color: var(--search-bg);
+  border-color: var(--search-border);
+  color: var(--text-primary);
+}
+
+.right-nav {
+  background-color: var(--sidebar-bg);
+  border-left-color: var(--border-color);
+}
+
+.footer-links {
+  background: var(--footer-bg);
+  border-top-color: var(--border-color);
+}
+
+/* 主题切换按钮样式 */
+.theme-toggle {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.theme-toggle i {
+  font-size: 1.2em;
+}
