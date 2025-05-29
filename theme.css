@@ -1,16 +1,16 @@
 /* 亮色主题 */
 [data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --border-color: #e0e0e0;
-  --hover-bg: #f0f0f0;
-  --sidebar-bg: #ffffff;
-  --footer-bg: #f5f5f5;
-  --search-bg: #ffffff;
-  --search-border: #dddddd;
-  --highlight-bg: #e3f2fd;
+  --bg-primary: #f8f9faa2;
+  --bg-secondary: #edf2f7;
+  --text-primary: #000000;
+  --text-secondary: #1a1a1a;
+  --border-color: #e2e8f0;
+  --hover-bg: #edf2f7;
+  --sidebar-bg: #f8f9fa;
+  --footer-bg: #edf2f7;
+  --search-bg: #e2e8f0;
+  --search-border: #cbd5e0;
+  --highlight-bg: #cbd5e0;
 }
 
 /* 暗色主题 */
@@ -31,6 +31,23 @@
 /* 应用主题变量 */
 body {
   background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* 确保亮色模式下所有文字元素使用深色 */
+[data-theme="light"] .sidebar nav a,
+[data-theme="light"] a,
+[data-theme="light"] p,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
+[data-theme="light"] span,
+[data-theme="light"] div,
+[data-theme="light"] label,
+[data-theme="light"] button {
   color: var(--text-primary);
 }
 
@@ -63,6 +80,29 @@ body {
 .footer-links {
   background: var(--footer-bg);
   border-top-color: var(--border-color);
+}
+
+/* 搜索结果高亮样式 */
+[data-theme="light"] .highlight {
+  background-color: #2d3748;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .highlight {
+  background-color: #f7fafc;
+  color: #1a202c;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* 搜索结果中h2标签的强调样式 */
+[data-theme="light"] .search-result h2 {
+  background-color: #2d3748;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 /* 主题切换按钮样式 */
