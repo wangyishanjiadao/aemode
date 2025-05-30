@@ -352,8 +352,8 @@ body {
 .sidebar-main {
   transition: transform 0.3s ease; /* 平滑过渡效果 */
   cursor: pointer; /* 鼠标指针显示为手形 */
-  width: 600px; /* 统一图片宽度 */
-  height: auto; /* 高度自动调整保持比例 */
+  width: auto; /* 统一图片宽度 */
+  height: 600px; /* 高度自动调整保持比例 */
   display: block; /* 确保图片占据整行 */
   margin: 20px 0; /* 添加上下间距 */
   border-radius: 8px; /* 添加圆角 */
