@@ -359,3 +359,10 @@ body {
   border-radius: 8px; /* 添加圆角 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
 }
+.enlarged-link {
+    transform: scale(2); /* 放大1.2倍 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+.center-content {
+    text-align: center;
+}
