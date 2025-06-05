@@ -1,9 +1,64 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.sidebar nav a');
+    const navLinks = document.querySelectorAll('.sidebar nav > ul > li > a');
     const contentBlocks = document.querySelectorAll('.content-block');
     const searchInput = document.querySelector('header input[type="search"]');
     let currentMatchIndex = -1;
     let matches = [];
+
+    // 生成子菜单的函数
+    function generateSubmenus() {
+        // 遍历每个内容区域
+        contentBlocks.forEach(block => {
+            const contentId = block.id.replace('-content', '');
+            const submenu = document.getElementById(`${contentId}-submenu`);
+            const h2Tags = block.querySelectorAll('h2');
+            
+            // 为每个h2标签创建子菜单项
+            h2Tags.forEach((h2, index) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.textContent = h2.textContent;
+                
+                // 添加点击事件
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // 显示对应的内容区域
+                    contentBlocks.forEach(b => b.style.display = 'none');
+                    block.style.display = 'block';
+                    // 滚动到对应的h2标签
+                    h2.scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                li.appendChild(a);
+                submenu.appendChild(li);
+            });
+        });
+
+        // 为主导航添加点击事件，控制子菜单的展开/折叠
+        navLinks.forEach(link => {
+            const submenu = link.parentElement.querySelector('.submenu');
+            if (submenu) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isExpanded = submenu.classList.contains('expanded');
+                    
+                    // 折叠所有子菜单
+                    document.querySelectorAll('.submenu').forEach(menu => {
+                        menu.classList.remove('expanded');
+                    });
+                    
+                    // 如果当前子菜单未展开，则展开它
+                    if (!isExpanded) {
+                        submenu.classList.add('expanded');
+                    }
+                });
+            }
+        });
+    }
+
+    // 初始化子菜单
+    generateSubmenus();
 
     // 创建导航按钮
     const navButtons = document.createElement('div');

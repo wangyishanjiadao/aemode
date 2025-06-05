@@ -54,8 +54,38 @@ body {
   padding: 0;
 }
 
-.sidebar nav ul ul {
+/* 子菜单样式 */
+.sidebar nav .submenu {
+  list-style: none;
   padding-left: 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  opacity: 0;
+}
+
+/* 展开状态的子菜单 */
+.sidebar nav .submenu.expanded {
+  max-height: 500px; /* 足够大的高度以容纳所有子菜单项 */
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+}
+
+/* 子菜单项样式 */
+.sidebar nav .submenu li {
+  margin: 5px 0;
+}
+
+.sidebar nav .submenu a {
+  font-size: 0.9em;
+  padding: 3px 0 3px 10px;
+  border-left: 2px solid #444;
+}
+
+.sidebar nav .submenu a:hover {
+  border-left: 2px solid #fff;
+  background-color: #333;
+  color: #fff;
 }
 
 .sidebar nav a {
