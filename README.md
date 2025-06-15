@@ -2,6 +2,7 @@
 
 ## 🤪 仓库简介
 这是一个✨神奇的✨仓库！！！在这里我会放一些超级无敌可爱的AE插件！！！
+新增了故我自己存放安卓和pc实用软件地方
 
 ## 🎉 贡献指南
 想要为这个仓库贡献插件？请按照以下步骤操作：
@@ -15,7 +16,3 @@
 ## 📖 参考资料
 - [Markdown 语法指南](https://daringfireball.net/projects/markdown/)
 - [GitHub Markdown 扩展语法](https://github.com/markdown-it/markdown-it)
-```
-wwwwww
-
-测试4
