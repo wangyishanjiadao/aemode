@@ -13,7 +13,7 @@ body {
 
 /* 小白条 */
 .sidebar {
-  width: 120px;
+  width: 160px;
   padding: 20px;
   border-right: 1px solid #444444;
   height: 100vh;
@@ -22,6 +22,51 @@ body {
   top: 0;
   left: 0;
   background-color: #1a1a1a;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) #1a1a1a;
+  z-index: 100;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 侧边栏滚动条样式 */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 确保内容在滚动时不会被遮挡 */
+.sidebar nav {
+  padding-bottom: 20px;
+}
+
+/* 自定义滚动条样式 */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
 }
 
 /* 首页分类 */
@@ -57,35 +102,103 @@ body {
 /* 子菜单样式 */
 .sidebar nav .submenu {
   list-style: none;
-  padding-left: 15px;
+  padding-left: 12px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
+  margin-bottom: 5px;
+  position: relative;
+  margin-left: 4px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
 }
 
 /* 展开状态的子菜单 */
 .sidebar nav .submenu.expanded {
-  max-height: 500px; /* 足够大的高度以容纳所有子菜单项 */
+  max-height: 400px;
   opacity: 1;
-  transition: max-height 0.5s ease-in, opacity 0.3s ease-in;
+  padding: 4px 0 8px 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* 子菜单滚动条样式 */
+.sidebar nav .submenu.expanded::-webkit-scrollbar {
+  width: 3px;
+}
+
+.sidebar nav .submenu.expanded::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar nav .submenu.expanded::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar nav .submenu.expanded::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* 子菜单项样式 */
 .sidebar nav .submenu li {
-  margin: 5px 0;
+  margin: 4px 0;
+  position: relative;
 }
 
 .sidebar nav .submenu a {
-  font-size: 0.9em;
-  padding: 3px 0 3px 10px;
+  font-size: 0.85em;
+  padding: 6px 8px 6px 10px;
   border-left: 2px solid #444;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+  line-height: 1.3;
+  margin-right: 8px;
+  border-radius: 0 4px 4px 0;
+}
+
+.sidebar nav .submenu a:hover {
+  border-left: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding-left: 15px;
+  transform: translateX(2px);
 }
 
 .sidebar nav .submenu a:hover {
   border-left: 2px solid #fff;
   background-color: #333;
   color: #fff;
+  padding-left: 12px; /* 悬停时稍微缩进 */
+}
+
+/* 添加滚动指示器 */
+.sidebar nav .submenu.expanded::after {
+  content: '▼';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #666;
+  font-size: 10px;
+  opacity: 0.7;
+  animation: bounce 1s infinite alternate;
+  display: none; /* 默认隐藏 */
+}
+
+/* 当子菜单内容超出时显示滚动指示器 */
+.sidebar nav .submenu.expanded.overflow::after {
+  display: block;
+}
+
+@keyframes bounce {
+  from { transform: translateX(-50%) translateY(0); }
+  to { transform: translateX(-50%) translateY(5px); }
 }
 
 .sidebar nav a {
@@ -108,8 +221,172 @@ body {
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  margin-left: 160px;
+  margin-left: 200px; /* 增加左边距以适应更宽的侧边栏 */
   padding-bottom: 80px; /* 添加底部内边距，确保内容不被固定页脚遮挡 */
+  transition: margin-left 0.3s ease;
+}
+
+/* 汉堡菜单按钮 */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 200;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle:hover {
+  background-color: #444;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding-top: 60px; /* 为固定的菜单按钮留出空间 */
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* 当侧边栏激活时，添加遮罩层 */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+
+/* 主导航链接样式优化 */
+.sidebar nav > ul > li {
+  margin: 8px 0;
+}
+
+.sidebar nav > ul > li > a {
+  padding: 8px 12px;
+  margin: 2px 0;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.sidebar nav > ul > li > a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateX(3px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 主菜单激活状态 */
+.sidebar nav > ul > li > a.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 确保子菜单和主菜单之间有适当的间距 */
+.sidebar nav > ul > li:has(.submenu) {
+  margin-bottom: 12px;
+}
+
+/* 添加平滑过渡效果 */
+.sidebar * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 优化性能 */
+.sidebar nav a {
+  will-change: transform, background-color, border-color;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* 添加微妙的视觉提示 */
+.sidebar nav > ul > li > a::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar nav > ul > li > a:hover::after {
+  opacity: 1;
+}
+
+/* 当子菜单展开时的主菜单项样式 */
+.sidebar nav > ul > li:has(.submenu.expanded) > a {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 确保动画性能 */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* 子菜单样式优化 */
+.sidebar nav .submenu {
+  padding-left: 12px;
+  margin-left: 4px;
+  border-left: 1px solid #444;
+}
+
+.sidebar nav .submenu a {
+  padding: 6px 8px;
+  margin: 2px 0;
+  font-size: 0.85em;
+  border-radius: 3px;
+}
+
+.sidebar nav .submenu a:hover {
+  background-color: #ffffff10;
+  border-left: 2px solid #fff;
+  padding-left: 12px;
 }
 
 /* 主页标题 */
@@ -303,19 +580,10 @@ body {
   text-decoration: none;
   color: #a8a8a8;
   display: block;
-  padding: 5px 0;
   transition: all 0.3s ease; /* 添加过渡效果 */
 }
 
-.sidebar nav a:hover {
-  color: #000000; /* 悬停时文字颜色 */
-  background-color: #ffffff; /* 悬停时背景颜色 */
-  border: 2px solid #ffffff; /* 添加边框 */
-  padding: 4px 8px; /* 可选：添加内边距以使方块更明显 */
-  border-radius: 3px; /* 可选：添加圆角 */
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* 可选：添加阴影效果 */
-  animation: pulse 1.5s infinite; /* 添加脉动动画 */
-}
+/* 移除通用悬停效果，因为我们已经为主菜单和子菜单分别定义了悬停样式 */
 
 @keyframes pulse {
   0% {

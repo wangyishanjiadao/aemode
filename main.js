@@ -2,8 +2,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.sidebar nav > ul > li > a');
     const contentBlocks = document.querySelectorAll('.content-block');
     const searchInput = document.querySelector('header input[type="search"]');
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.querySelector('.sidebar-overlay');
     let currentMatchIndex = -1;
     let matches = [];
+    
+    // 响应式菜单功能
+    if (menuToggle && sidebar && sidebarOverlay) {
+        // 汉堡菜单点击事件
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+        });
+        
+        // 遮罩层点击事件
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.classList.remove('sidebar-open');
+        });
+        
+        // 在小屏幕上点击导航链接后关闭侧边栏
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+                    document.body.classList.remove('sidebar-open');
+                }
+            });
+        });
+        
+        // 窗口大小变化时处理
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+        });
+    }
 
     // 生成子菜单的函数
     function generateSubmenus() {
@@ -46,11 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 折叠所有子菜单
                     document.querySelectorAll('.submenu').forEach(menu => {
                         menu.classList.remove('expanded');
+                        menu.classList.remove('overflow');
                     });
                     
                     // 如果当前子菜单未展开，则展开它
                     if (!isExpanded) {
                         submenu.classList.add('expanded');
+                        
+                        // 检查子菜单是否需要滚动
+                        setTimeout(() => {
+                            if (submenu.scrollHeight > submenu.clientHeight) {
+                                submenu.classList.add('overflow');
+                            }
+                        }, 300); // 等待展开动画完成
                     }
                 });
             }
