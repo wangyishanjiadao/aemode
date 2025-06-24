@@ -224,6 +224,7 @@ body {
   margin-left: 200px; /* 增加左边距以适应更宽的侧边栏 */
   padding-bottom: 80px; /* 添加底部内边距，确保内容不被固定页脚遮挡 */
   transition: margin-left 0.3s ease;
+  max-width: 1200px; /* 限制最大宽度，使内容更加居中 */
 }
 
 /* 汉堡菜单按钮 */
@@ -394,9 +395,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #3f3f3f;
   padding-bottom: 15px;
   margin-bottom: 20px;
+  position: relative;
+}
+
+/* 添加一个伪元素作为无限长的细线 */
+.main-content header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -9999px;
+  right: -9999px;
+  height: 1px;
+  background-color: #3f3f3f;
 }
 
 .main-content header input[type="search"] {
@@ -426,40 +438,6 @@ body {
   text-align: center;
   margin: 20px 0;
   background-color: #252525;
-}
-
-.right-nav {
-  width: 150px;
-  padding: 20px;
-  border-left: 1px solid #333;
-  height: 100vh;
-  overflow-y: auto;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: #1a1a1a;
-}
-
-.right-nav h3 {
-  margin-top: 0;
-  color: #fff;
-}
-
-.right-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-.right-nav ul a {
-  text-decoration: none;
-  color: #b0b0b0;
-  display: block;
-  padding: 5px 0;
-  font-size: 1em;
-}
-
-.right-nav ul a:hover {
-  color: #fff;
 }
 
 .footer-links {
