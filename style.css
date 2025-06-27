@@ -635,10 +635,21 @@ body {
   border-radius: 8px; /* 添加圆角 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
 }
-.enlarged-link {
-    transform: scale(2); /* 放大1.2倍 */
-    transition: transform 0.3s ease; /* 添加过渡效果 */
-}
+
 .center-content {
     text-align: center;
+.big-link {
+    font-size: 24px; /* 设置字体大小为 24 像素 */
+    color: #007BFF; /* 设置链接颜色为蓝色 */
+    text-decoration: none; /* 去除下划线 */
+    padding: 10px 20px; /* 设置内边距 */
+    display: inline-block; /* 设置为行内块元素 */
+    border: 1px solid #007BFF; /* 设置边框 */
+    border-radius: 30px; /* 设置圆角 */
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+
+.big-link:hover {
+    background-color: #007BFF; /* 鼠标悬停时背景颜色 */
+    color: white; /* 鼠标悬停时文字颜色 */
 }
